@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-statonLetters',
-  templateUrl: 'StationLetters.html'
+  selector: 'page-SecuritySettingsPages',
+  templateUrl: 'SecuritySettingsPages.html'
 })
-export class StationLettersPage {
+export class SecuritySettingsPage {
 
   constructor(public navCtrl: NavController) {
  

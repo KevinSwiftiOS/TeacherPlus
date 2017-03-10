@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>
      个人中心
     </ion-title>
@@ -11,6 +11,32 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="">
+  <div style="background-color: #0c60ee;height:150px " center text-center>
+    <!--头像的基本信息-->
+    <div  style="background-color: #0c60ee" center text-center>
+      <img src="../../../assets/img/head.png" style="margin-top:20px;width: 100px;height:100px;border-radius:50px 50px 50px 50px;text-align: center;" ng-click="selectHead()">
+      <ion-icon name="camera" style="font-size: 40px;color: white;margin-left: -40px" ></ion-icon>
+    </div>
+
+  </div>
+  <ion-list insert reorder="false">
+    <ion-item (click) = "editBasicInf()">
+      <ion-icon name="person" item-left></ion-icon>
+      基本资料
+  <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item (click) = "securitySettings()">
+      <ion-icon name="lock" item-left></ion-icon>
+      安全设置
+        <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+    <ion-item (click) = "exit()">
+      <ion-icon name="log-out" item-left></ion-icon>
+      退出登录
+
+    </ion-item>
+    <ion-input [hidden]="true" ></ion-input>
+  </ion-list>
 
 </ion-content>

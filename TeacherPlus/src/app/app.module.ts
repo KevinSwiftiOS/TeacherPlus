@@ -6,7 +6,8 @@ import { InformationPage } from '../pages/TabsPages/Infor/Information';
 import { PersonalPage } from '../pages/TabsPages/Personal/Personal';
 import { TabsPage } from '../pages/TabsPages/tabs/tabs';
 //个人中心模板
-import {StationLettersPage} from '../pages/PersonalPages/StationLetters/StationLetters'
+import {StationLettersPage} from '../pages/PersonalPages/StationLetters/StationLetters';
+import {SecuritySettingsPage} from '../pages/PersonalPages/SecuritySettingsPages/SecuritySettingsPages'
 //服务的注入
 import {HttpService} from '../services/HttpService'
 @NgModule({
@@ -17,11 +18,15 @@ import {HttpService} from '../services/HttpService'
     PersonalPage,
     TabsPage,
     //个人中心模块
-    StationLettersPage
+    StationLettersPage,
+    SecuritySettingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
-  ],
+     IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+      backButtonText: '返回'
+    }, {}
+  )],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -30,7 +35,8 @@ import {HttpService} from '../services/HttpService'
     PersonalPage,
     TabsPage,
     //个人中心模块
-    StationLettersPage
+    StationLettersPage,
+    SecuritySettingsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},HttpService]
 })

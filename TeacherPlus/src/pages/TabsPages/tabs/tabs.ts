@@ -13,8 +13,10 @@ export class TabsPage {
   tab1Root: any = MyCoursePage;
   tab2Root: any = InformationPage;
   tab3Root: any = PersonalPage;
-
+tabBarElement:any;
   constructor() {
 
   }
+
+
 }
