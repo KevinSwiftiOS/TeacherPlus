@@ -15,8 +15,8 @@
   <div style="background-color: #0c60ee;height:150px " center text-center>
     <!--头像的基本信息-->
     <div  style="background-color: #0c60ee" center text-center>
-      <img src="../../../assets/img/head.png" style="margin-top:20px;width: 100px;height:100px;border-radius:50px 50px 50px 50px;text-align: center;" ng-click="selectHead()">
-      <ion-icon name="camera" style="font-size: 40px;color: white;margin-left: -40px" ></ion-icon>
+      <img src="../../../assets/img/head.png" style="margin-top:20px;width: 100px;height:100px;border-radius:50px 50px 50px 50px;text-align: center;" (click)="selectHead()">
+      <ion-icon name="camera" style="font-size: 40px;color: white;margin-left: -40px" (click) = "selectHead()"></ion-icon>
     </div>
 
   </div>

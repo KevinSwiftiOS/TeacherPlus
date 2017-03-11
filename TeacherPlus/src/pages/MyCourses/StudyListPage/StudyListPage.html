@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color = "primary">
+     <ion-buttons end>
+  <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+     </ion-buttons>
+    <ion-title>
+     立即学习
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-menu [content]="mycontent" side = "right">
+ <ion-header>
+    <ion-toolbar>
+      <ion-title>侧界面</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+   <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPages" swipeBackEnabled="true"></ion-nav>

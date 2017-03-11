@@ -3,13 +3,19 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/TabsPages/tabs/tabs';
-
-
+import {LoginPage} from '../pages/LoginAndResetPages/LoginPage/LoginPage';
+var root;
+if(localStorage.getItem("authtoken") == null) {
+  root = LoginPage;
+}else{
+  root = TabsPage;
+  
+}
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  rootPage = root;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

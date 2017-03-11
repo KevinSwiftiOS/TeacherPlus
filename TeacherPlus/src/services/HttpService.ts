@@ -16,7 +16,6 @@ export class HttpService {
       authtoken: "0B849459E30161BE5A5E302F257022FA1FCF5D09E7BD2A2D",
       count: 100,
       page: 1        }
-
     return this.http.post("http://dodo.hznu.edu.cn/apiteach/courselist",param,{})
       .toPromise()
       .then( response => {

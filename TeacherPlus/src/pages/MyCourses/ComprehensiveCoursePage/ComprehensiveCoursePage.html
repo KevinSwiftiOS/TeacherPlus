@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color = "primary">
+    <ion-title>
+      立即学习
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-list  style="padding-right: 20px">
+
+  <ion-item insert style="padding-right: 20px">
+    <ion-label>原密码:</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+  <ion-item insert style="padding-right: 20px">
+    <ion-label>新密码:</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+    <ion-item insert style="padding-right: 20px">
+    <ion-label>确认密码:</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-input [hidden]="true" ></ion-input>
+</ion-list>
+
+<div padding>
+    <button ion-button color="primary" block>确认</button>
+  </div>
+</ion-content>
