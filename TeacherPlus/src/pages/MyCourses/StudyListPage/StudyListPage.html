@@ -1,28 +1,23 @@
 <ion-header>
   <ion-navbar color = "primary">
-     <ion-buttons end>
-  <button ion-button menuToggle >
-      <ion-icon name="menu"></ion-icon>
-    </button>
-     </ion-buttons>
     <ion-title>
      立即学习
     </ion-title>
   </ion-navbar>
-</ion-header>
-<ion-menu [content]="mycontent" side = "right">
- <ion-header>
-    <ion-toolbar>
-      <ion-title>侧界面</ion-title>
-    </ion-toolbar>
   </ion-header>
   <ion-content>
-   <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+    <div style="width: 100px;float: left" class="ion-list">
+  <div ion-item *ngFor="let page of pages;let i = index" (click)="pageSelected(i)" [ngClass] = "{active:page.isShow}">
+   
+    {{ page.title }}
+  </div> 
+    </div>
+  
+  <div style="float: left">
+    <page-ComprehensiveCoursePage *ngIf = "pages[0].isShow"></page-ComprehensiveCoursePage>
+  <page-BeforeTestPage *ngIf = "pages[1].isShow"></page-BeforeTestPage>
+  <page-SemiarCoursePage *ngIf = "pages[2].isShow"></page-SemiarCoursePage>
+  <page-SupportCoursePage *ngIf = "pages[3].isShow"></page-SupportCoursePage>
+  <page-LearningSitutationPage *ngIf = "pages[4].isShow"></page-LearningSitutationPage>
+  </div>
   </ion-content>
-</ion-menu>
-
-<ion-nav #mycontent [root]="rootPages" swipeBackEnabled="true"></ion-nav>
