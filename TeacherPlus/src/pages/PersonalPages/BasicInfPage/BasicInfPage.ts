@@ -4,7 +4,7 @@
 import { Component } from '@angular/core';
 
 import { NavController,ActionSheetController } from 'ionic-angular';
-
+declare var swal;
 @Component({
   selector: 'page-BasicInfPage',
   templateUrl: 'BasicInfPage.html'
@@ -44,5 +44,8 @@ export class BasicInfPage {
      });
 actionSheet.present(); 
 }
- 
+ //保存
+ save() {
+   swal("恭喜您","保存成功","success");
+ }
 }

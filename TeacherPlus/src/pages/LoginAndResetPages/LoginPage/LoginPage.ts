@@ -14,6 +14,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController) {
  
  }
+
  //登录
  login() {
   this.navCtrl.push(TabsPage);

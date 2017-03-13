@@ -1,66 +1,66 @@
 <ion-header>
-  <ion-navbar color = "primary">
-        <ion-buttons end>
-      <button ion-button>保存
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button (click) = "save()">保存
       </button>
-        </ion-buttons>
+    </ion-buttons>
     <ion-title>
-     个人档案
+      个人档案
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-<ion-list>
- <ion-list-header>
-     基本信息
- </ion-list-header>
-  <ion-item>
-    <ion-label>姓名:</ion-label>
-    <ion-input type="text" text-right></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-list-header>
+      基本信息
+    </ion-list-header>
+    <ion-item>
+      <ion-label>姓名:</ion-label>
+      <ion-input type="text" text-right></ion-input>
+    </ion-item>
+    <ion-item (click)="selectSex()">
+      <p style="float: left;color: black">性别:</p>
 
-  <ion-item (click) = "selectSex()">
-    <ion-label>性别:</ion-label>
-    <ion-input type="button"  value = "男" text-right></ion-input>
-  </ion-item>
+      <p style="float: right">男</p>
+    </ion-item>
 
     <ion-item>
-    <ion-label>归口区县:</ion-label>
-    <ion-input type="text"  text-right></ion-input>
-  </ion-item>
+      <ion-label>归口区县:</ion-label>
+      <ion-input type="text" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>工作单位:</ion-label>
-    <ion-input type="text"  text-right></ion-input>
-  </ion-item>
+      <ion-label>工作单位:</ion-label>
+      <ion-input type="text" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>参考学科:</ion-label>
-    <ion-input type="text"  text-right></ion-input>
-  </ion-item>
-  <ion-list-header>
+      <ion-label>参考学科:</ion-label>
+      <ion-input type="text" text-right></ion-input>
+    </ion-item>
+    <ion-list-header>
       联系方式
-  </ion-list-header>
+    </ion-list-header>
     <ion-item>
-    <ion-label>移动电话:</ion-label>
-    <ion-input type="number"  text-right></ion-input>
-  </ion-item>
+      <ion-label>移动电话:</ion-label>
+      <ion-input type="number" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>QQ号码:</ion-label>
-    <ion-input type="number"  text-right></ion-input>
-  </ion-item>
+      <ion-label>QQ号码:</ion-label>
+      <ion-input type="number" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>电子邮件:</ion-label>
-    <ion-input type="email"  text-right></ion-input>
-  </ion-item>
+      <ion-label>电子邮件:</ion-label>
+      <ion-input type="email" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>邮政编码:</ion-label>
-    <ion-input type="number"  text-right></ion-input>
-  </ion-item>
+      <ion-label>邮政编码:</ion-label>
+      <ion-input type="number" text-right></ion-input>
+    </ion-item>
     <ion-item>
-    <ion-label>联系地址:</ion-label>
-    <ion-input type="text"  text-right></ion-input>
-  </ion-item>
+      <ion-label>联系地址:</ion-label>
+      <ion-input type="text" text-right></ion-input>
+    </ion-item>
 
-  <ion-input [hidden]="true"  text-right></ion-input>
-</ion-list>
+    <ion-input [hidden]="true" text-right></ion-input>
+  </ion-list>
 </ion-content>
