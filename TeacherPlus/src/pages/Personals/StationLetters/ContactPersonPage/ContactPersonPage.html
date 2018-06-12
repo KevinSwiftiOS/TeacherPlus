@@ -1,0 +1,36 @@
+<ion-header> 
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button (click)="cancel()">
+                     取消
+                    </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button (click)="saveContacts()">
+                 保存
+                </button>
+        </ion-buttons>
+        <ion-title>
+            联系人
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <page-EmptyListPage *ngIf='items.length > 0 ? false:true'></page-EmptyListPage>
+    <ion-item-group *ngFor="let item of items;let i = index" text-wrap>
+        <ion-item-divider (click)="openGroup(i)" color="light" text-gn>{{item.name}}
+            <ion-icon name="{{item.arrawIcon}}" item-left></ion-icon>
+            <ion-icon name="{{item.icon}}" (click)="addGroup(i)" style="float:right;font-size: 30px"></ion-icon>
+        </ion-item-divider>
+        <ion-list *ngIf=item.isShow>
+            <ion-item *ngFor="let deItem of item.items;let j = index" text-wrap>
+                <ion-avatar item-left>
+                    <img src="{{deItem.avator}}">
+                </ion-avatar>
+                <p>{{deItem.name}}</p>
+                <ion-icon name="{{deItem.icon}}" (click)="addPerson(deItem,i,j)" style="float:right;font-size: 30px">
+                </ion-icon>
+            </ion-item>
+        </ion-list>
+    </ion-item-group>
+</ion-content>

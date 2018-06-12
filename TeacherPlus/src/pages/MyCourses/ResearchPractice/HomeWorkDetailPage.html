@@ -1,0 +1,96 @@
+<ion-header> 
+    <ion-navbar>
+            <ion-buttons  end>
+                    <button   ion-button  (click)="finalSave()">
+                       <p *ngIf = "canWork">{{btnTitle}}</p>
+                        </button>
+          </ion-buttons>
+      <ion-title>
+       作业详情
+      </ion-title>
+
+    </ion-navbar>
+    </ion-header>
+<ion-content>
+
+  
+<div padding>作业要求:{{desc}}
+</div>
+<div style="background-color: yellow;text-align: center">
+    手机上只能提交视频和图片，如需提交文档，请使用电脑提交作业。
+</div>
+
+<p *ngIf = "hasAns" padding>已提交内容：</p>
+<div *ngIf = "hasAnsText" [innerHtml]="data.myTextAnswer" padding></div>
+<ion-list style="height: 10%" *ngIf = "hasAnsAttach" >
+
+        <button ion-item  (click) = "detailAnsAttach(attach)" *ngFor="let attach of data.attachs;let i = index" text-wrap>
+                 
+                <ion-thumbnail item-start>
+                        <img src="{{attach.metadata.Thumbnail}}">
+                      </ion-thumbnail>
+                     
+                      <p>文件大小：{{attach.fileLengthText}}</p>
+                      <ion-icon *ngIf = "attach.fileType == '视频'" name="logo-youtube" item-end></ion-icon>
+               </button>
+               </ion-list>
+<div *ngIf = "canWork">
+<div *ngIf = "hasText">
+
+
+
+
+
+   <textarea rows = 10 placeholder = "请输入内容" [disabled] = "!data.canWork" [(ngModel)]="myTextAnswer" style="margin-left: 7px; width:96%;height:30%;border-width: 1px;
+   border-color: black;border-style: solid" >
+ 
+   </textarea>
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf = "hasAttach" style="height: 10%">
+        <button ion-button    (click) = "addAttach()" style="text-align:center">添加视频</button>
+        <button ion-button    (click) = "addImg()" style="text-align:center">添加图片</button>
+</div>
+<p></p>
+<ion-list can-swipe="true" style="height: 10%" >
+     
+
+
+
+    <ion-item-sliding    (click) = "detailAttachBeforeSubmit(attach,i)" *ngFor="let attach of ansAttachs;let i = index" text-wrap>
+       
+                <button ion-item>
+                 
+                        <ion-thumbnail item-start>
+                                <img src="{{attach.metadata.Thumbnail}}">
+                              </ion-thumbnail>
+                             
+                              <p>文件大小：{{attach.fileLengthText}}</p>
+                              <ion-icon *ngIf = "attach.fileType == '视频'" name="logo-youtube" item-end></ion-icon>
+                       </button>
+  
+
+   <ion-item-options>
+    <button ion-button color="danger" (click)="removeAnsAttach(attach,i)">删除</button>
+  </ion-item-options>
+</ion-item-sliding>
+</ion-list>
+</div>
+<div *ngIf = "hasComment">
+    <p>成绩：{{data.judgeLevel}}</p>
+    <p>评语：{{data.judgeComment}}</p>
+    <p>批阅教师：{{data.judgeTeacher}}</p>
+     <p>批阅时间：{{data.judgeTime}}</p>
+</div>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header> 
+    <ion-navbar>
+            <ion-title>
+                  参与话题讨论
+            </ion-title>
+         
+            
+          </ion-navbar>
+        
+        </ion-header>
+        
+        <ion-content padding>
+          <h2 style="text-align: center">{{item.title}}</h2>
+         <p>{{item.content}}</p>
+         <ion-toolbar color="light">回复列表</ion-toolbar>
+         <page-EmptyListPage *ngIf='replies.length > 0 ? false:true'></page-EmptyListPage>
+         <ion-list>
+             <ion-item-sliding *ngFor="let reply of replies;let i = index">
+                 <ion-item>
+                     <ion-avatar item-left>
+                         <img src="{{reply.avator || defaultAvator}}">
+                     </ion-avatar>
+                     <ion-badge *ngIf="reply.isTeacher" color="info" text-xs text-light>教师</ion-badge>
+                     <div text-wrap text-lg>{{reply.content}}</div>
+                     <p text-xs>{{reply.author}} 于 {{reply.date}} 发表</p>
+             
+                 </ion-item>
+               
+     
+             </ion-item-sliding>
+         </ion-list>
+         <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+             <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{loadingText}}">
+             </ion-infinite-scroll-content>
+           </ion-infinite-scroll>
+     
+     
+        
+        </ion-content>

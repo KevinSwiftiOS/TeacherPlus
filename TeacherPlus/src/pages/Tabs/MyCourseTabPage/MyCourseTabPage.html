@@ -1,0 +1,48 @@
+<ion-header> 
+  <ion-navbar>
+    <ion-title>学习</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <page-EmptyListPage *ngIf = 'items.length > 0 ? false:true'></page-EmptyListPage>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content   pullingIcon="arrow-dropdown"
+        pullingText="下拉刷新"
+        refreshingSpinner="circles"
+        refreshingText="正在刷新中..."></ion-refresher-content>
+      </ion-refresher>
+<ion-card *ngFor="let item of items"  text-wrap>
+  <ion-card-content>
+  
+  
+  <ion-card-title>
+      {{item.title}}
+    </ion-card-title>
+    
+      <p>学期：{{item.term}} </p>
+        <p>培训时间：{{item.dateRange}}</p>
+        <p *ngIf = "!isDemo"> 费用：{{item.charge}}</p>
+      <p> 培训状态：{{item.status}}
+        
+    </p>
+  
+    <p *ngIf = "item.showScore">成绩：{{item.score}}</p> 
+  </ion-card-content>
+  <ion-row no-padding>
+    <ion-col>
+        <button ion-button   small *ngIf = "item.canLearn" (click) = "goToStudy(item)" class="StudyBtn" icon-start round>去学习</button>
+      </ion-col>
+      <ion-col text-center>
+        <button  ion-button small  *ngIf = "item.canPrintCer" ion-button  (click) = "PrintCer(item)"  icon-start round>打印证书</button>
+       </ion-col>
+  
+       <ion-col text-right>
+     <button  ion-button clear small ion-button  (click) = "share(item)" class="StudyBtn" icon-start><ion-icon   name = "share"></ion-icon>分享</button>
+    
+    </ion-col>
+  </ion-row>
+     
+  </ion-card>
+  
+</ion-content>

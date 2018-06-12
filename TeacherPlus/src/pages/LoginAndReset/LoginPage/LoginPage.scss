@@ -1,0 +1,13 @@
+page-LoginPage {
+    .logo {
+        height: 130px;
+        background: url(../assets/img/tplogo.png) no-repeat center 50px;
+        background-size: 200px;
+    }
+    .LoginAndResetBtn {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+}

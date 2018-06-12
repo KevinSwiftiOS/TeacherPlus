@@ -1,0 +1,105 @@
+<ion-header> 
+  <ion-navbar>
+    <ion-title>
+      我的消息
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar color="light">
+    <ion-segment [(ngModel)]="msgType">
+      <ion-segment-button value="privateMessage" (ionSelect)="selectedPrivateMessage()">私信
+
+          <ion-badge  *ngIf = "'messNewCnt > 0'" color="danger" item-right>{{messNewCnt}}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button value="systemMessage" (ionSelect)="selectedSystemMessage()">系统消息
+          <ion-badge    *ngIf = "'sysNewCnt > 0'" color="danger" item-right>{{sysNewCnt}}</ion-badge>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)">
+      <ion-refresher-content   pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新中..."></ion-refresher-content>
+    </ion-refresher>
+
+  <div [ngSwitch]="msgType">
+    <div *ngSwitchCase="'privateMessage'">
+      <div [ngSwitch]="privateMessageType">
+        <div *ngSwitchCase="'receive'">
+          <page-EmptyListPage *ngIf='receiveItems.length == 0'></page-EmptyListPage>
+          <ion-list can-swipe="true">
+            <ion-item-sliding *ngFor="let item of receiveItems;let i = index">
+              <button ion-item (click)="receiveDetail(item)" text-wrap>
+                <ion-icon name="{{item.iconName}}" item-left></ion-icon>
+                <h2>
+                  {{item.subject}}</h2>
+                <p>{{item.senderName}} 于 {{item.sendTime}} 发表</p>
+                <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+                </button>
+              <ion-item-options>
+                <button ion-button color="danger" (click)="receiveRemove(item,i)">删除</button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+
+        </div>
+        <div *ngSwitchCase="'send'">
+          <page-EmptyListPage *ngIf='sendItems.length > 0 ? false:true'></page-EmptyListPage>
+
+          <ion-list can-swipe="true">
+            <ion-item-sliding *ngFor="let item of sendItems;let i = index">
+              <button ion-item (click)="sendDetail(item)"text-wrap>
+                <h2>
+                  <ion-icon name="{{item.iconName}}"></ion-icon>
+                  {{item.subject}}</h2>
+                <p>{{item.senderName}} 于 {{item.sendTime}} 发表</p>
+                <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+                </button>
+              <ion-item-options>
+                <button ion-button color="danger" (click)="sendRemove(item,i)">删除</button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'systemMessage'">
+      <page-EmptyListPage *ngIf='sysItems.length == 0'></page-EmptyListPage>
+      <ion-list can-swipe="true">
+        <ion-item-sliding *ngFor="let sysItem of sysItems;let i = index">
+          <button ion-item (click)="sysItemDetail(sysItem)" text-wrap>
+            <ion-avatar item-left>
+              <img src="{{sysItem.img}}" />
+            </ion-avatar>
+            <h2>{{sysItem.subject}}</h2>
+            <p>创建时间：{{sysItem.createTime}}</p>
+            <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+          </button>
+          <ion-item-options>
+            <button ion-button color="danger" (click)="sysItemRemove(sysItem,i)">删除</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{loadingText}}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab *ngIf="msgType == 'privateMessage'" left bottom style="margin-bottom: 10px">
+    <button ion-fab (click)="writeEmail()">
+      <ion-icon name="create"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+<ion-footer *ngIf="msgType == 'privateMessage'">
+  <ion-toolbar color="light">
+    <ion-segment [(ngModel)]="privateMessageType" color="primary">
+      <ion-segment-button value="receive" (ionSelect)="selectedReceive()">收信箱</ion-segment-button>
+      <ion-segment-button value="send" (ionSelect)="selectedSend()">发信箱</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

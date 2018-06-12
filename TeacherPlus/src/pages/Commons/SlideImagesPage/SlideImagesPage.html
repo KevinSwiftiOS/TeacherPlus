@@ -1,0 +1,12 @@
+
+
+<ion-slides   (ionSlideDidChange)="slideChanged()" pager="true"  initialSlide = "{{index}}" (click) = "dismisssSlide()">
+
+  <ion-slide   *ngFor = "let img of imgs" style="background-color: black">
+  
+
+    <img src = "{{img}}"  style="width:100%;height: 300px"/>
+
+  </ion-slide>
+
+</ion-slides>

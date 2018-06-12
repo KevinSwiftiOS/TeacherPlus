@@ -1,0 +1,19 @@
+<ion-header> 
+    <ion-navbar>
+        <ion-title>
+            视频学习
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <page-EmptyListPage *ngIf='items.length > 0 ? false:true'></page-EmptyListPage>
+    <p padding-horizontal>{{alertMessage}}</p>
+    <ion-item-group *ngFor="let item of items" text-wrap>
+        <ion-item-divider color="light" class="text-gn" text-gn>{{item.groupName}}</ion-item-divider>
+        <ion-item *ngFor="let deItem of item.items" text-wrap>
+            {{deItem.title}}
+            <progress-bar thin [progress]="deItem.progress" [labelStyle]="'outer'"></progress-bar>
+            <button ion-button (click)="goToStudy(deItem)" item-right round>去学习</button>
+        </ion-item>
+    </ion-item-group>
+</ion-content>

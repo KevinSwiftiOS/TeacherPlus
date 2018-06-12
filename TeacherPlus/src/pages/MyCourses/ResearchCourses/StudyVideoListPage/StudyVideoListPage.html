@@ -1,0 +1,28 @@
+<ion-header> 
+    <ion-navbar>
+            <ion-buttons end>
+                    <button ion-button (click) = "collect()"><ion-icon   name = "{{iconName}}"></ion-icon>
+                        </button>
+                </ion-buttons>
+        <ion-title>
+            {{courseTitle}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <img src="{{cover}}" style="width:100%;max-height:252px" />
+    <page-EmptyListPage *ngIf='items.length > 0 ? false:true'></page-EmptyListPage>
+    <p padding-horizontal>课程进度：</p>
+    <progress-bar *ngIf='items.length > 0 ? true:false' [progress]="loadProgress"></progress-bar>
+    <ion-item-group *ngFor="let item of items;let i = index" text-wrap>
+        <ion-item-divider color="light" text-gn>{{item.groupName}}</ion-item-divider>
+        <button ion-item *ngFor="let deItem of item.items;let j = index" (click)="detail(deItem)" text-wrap>
+            <ion-icon name="{{deItem.icon}}" *ngIf="deItem.isRequiredFinish" color="primary" item-left>
+            </ion-icon>
+            <h2>{{deItem.title}}</h2>
+            <p *ngIf="deItem.type == '观看视频'">
+                视频时长：{{deItem.metadata.length}}</p>
+                <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+        </button>
+    </ion-item-group>
+</ion-content>

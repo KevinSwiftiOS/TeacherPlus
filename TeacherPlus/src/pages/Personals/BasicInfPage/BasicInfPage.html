@@ -1,0 +1,76 @@
+<ion-header> 
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click) = "save()">保存
+      </button>
+    </ion-buttons>
+    <ion-title>
+      个人资料
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div style="background-color: #25A24D;height:150px;margin-top: -20px" padding-horizontal>
+        <!--头像的基本信息-->
+        <div style="background-color: #25A24D" center text-center>
+          <img [src]="basicInfo.avator" style="margin-top:30px;width: 100px;height:100px;border-radius:50px 50px 50px 50px;text-align: center;"
+            (click)="selectHead()">
+          <ion-icon name="camera" style="font-size: 40px;color: white;margin-left: -40px" (click)="selectHead()"></ion-icon>
+        </div>
+    
+      </div>
+  <ion-list>
+    
+    <ion-item>
+      <ion-label>用户名:</ion-label>
+      <ion-input type="text" text-right disabled = "true" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>姓名:</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="basicInfo.name"></ion-input>
+    </ion-item>
+    <ion-item (click)="selectSex()">
+      <p style="float: left;color: black">性别:</p>
+
+      <p style="float: right">{{basicInfo.sex}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>区县:</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="basicInfo.district"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>工作单位:</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="basicInfo.company"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>任教学科:</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="basicInfo.subject"></ion-input>
+    </ion-item>
+    <ion-list-header>
+      联系方式
+    </ion-list-header>
+    <ion-item>
+      <ion-label>移动电话:</ion-label>
+      <ion-input type="number" text-right [(ngModel)]="basicInfo.mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>QQ号码:</ion-label>
+      <ion-input type="number" text-right [(ngModel)]="basicInfo.QQ"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>电子邮件:</ion-label>
+      <ion-input type="email" text-right [(ngModel)]="basicInfo.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>邮政编码:</ion-label>
+      <ion-input type="number" text-right [(ngModel)]="basicInfo.zipcode"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>联系地址:</ion-label>
+      <ion-input type="text" text-right [(ngModel)]="basicInfo.addr"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

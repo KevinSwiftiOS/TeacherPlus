@@ -1,0 +1,19 @@
+<ion-header> 
+  <ion-navbar>
+      <ion-buttons end>
+          <button  *ngIf = "canShare" ion-button (click) = "share()"><ion-icon   name = "share"></ion-icon>
+              </button>
+      </ion-buttons>
+          <ion-title>
+  {{infocate}}
+          </ion-title>
+        </ion-navbar>
+      </ion-header>
+ 
+      <ion-content padding>
+          <h2 style="text-align:center">{{title}}</h2>
+
+        <div [innerHtml]="content" (click)="imgModal($event)"></div>
+
+      </ion-content>
+      

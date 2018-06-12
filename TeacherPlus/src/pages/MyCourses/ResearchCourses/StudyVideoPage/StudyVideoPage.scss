@@ -1,0 +1,24 @@
+page-StudyVideoPage {
+    .background {
+        opacity: 0.8;
+        background-color: transparent;
+    }
+    .hiddennav {
+        transition: min-height 0.4s, opacity 0.5s ease-out;
+        min-height: 0 !important;
+        opacity: 0.3 !important;
+        background-color: red;
+        overflow: hidden !important;
+    }
+    vg-scrub-bar-current-time {
+        background-color: #73859f;
+        background-color: rgba(115, 133, 159, 0.5);
+    }
+    .toolbar-background {
+        background-color: #000 !important;
+        border: none !important;
+    }
+    .toolbar-title {
+        font-size: 1.5rem !important;
+    }
+}

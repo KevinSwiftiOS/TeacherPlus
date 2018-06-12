@@ -1,0 +1,6 @@
+<div class="progress-outer {{labelStyle}}">
+    <div class="progress-inner" [style.width]="progress + '%'">
+        <span *ngIf="labelStyle == 'inner'">{{progress}}%</span>
+    </div>
+</div>
+<span class="progress-label" *ngIf="labelStyle == 'outer'">{{progress}}%</span>

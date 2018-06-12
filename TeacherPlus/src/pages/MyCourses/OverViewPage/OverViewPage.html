@@ -1,0 +1,26 @@
+<ion-header> 
+  <ion-navbar>
+      <ion-title>
+       立即学习
+      </ion-title>
+    </ion-navbar>
+    </ion-header>
+  <ion-content>
+      <page-EmptyListPage *ngIf = 'modules.length > 0 ? false:true'></page-EmptyListPage>
+    <p padding-horizontal>{{alertMessage}}</p>
+    <p padding-horizontal>项目进度：</p>
+      <progress-bar *ngIf = 'modules.length > 0 ? true:false' [progress]="loadProgress"></progress-bar>
+ 
+      <ion-list>
+          <ion-item *ngFor="let module of modules"  text-wrap>
+         <p></p>
+            <h2>{{module.title}}</h2>
+      <p>总分：{{module.score}}&nbsp;已得分：{{module.myscore}}</p>
+      <div style="height: 30px; overflow-y:auto;font-size: 10px;">{{module.desc}}</div>
+             <button ion-button (click) = "goToStudy(module)"  item-right round>去学习</button>
+             
+          </ion-item>
+        </ion-list>
+  
+  </ion-content>
+  

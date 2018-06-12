@@ -1,0 +1,44 @@
+<ion-header> 
+  <ion-navbar>
+    <ion-title>
+      我的
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group>
+      
+    <button ion-item (click)="pushMyMessage()">
+      <ion-icon name="mail" item-left></ion-icon>
+      消息中心
+      <ion-badge   *ngIf = "hasUnread" color="danger" item-right>{{totalUnCnt}}</ion-badge>
+      <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+    </button>
+
+    <button ion-item (click)="editBasicInf()">
+      <ion-icon name="person" item-left></ion-icon>
+
+      个人资料
+      <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+    </button>
+    <button ion-item (click)="securitySettings()">
+      <ion-icon name="lock" item-left></ion-icon>
+      安全设置
+      <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+    </button>
+    <ion-input [hidden]="true"></ion-input>
+    <ion-item-divider color="light"></ion-item-divider>
+    <button ion-item (click)="showFavorites()">
+        <ion-icon name="star" item-left></ion-icon>
+  
+        收藏课程
+        <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+    </button>
+  </ion-item-group>
+  <div padding style="margin-top: 10px">
+    <button ion-button color="danger" outline block (click)="exit()">
+      退出登录
+    </button>
+  </div>
+</ion-content>

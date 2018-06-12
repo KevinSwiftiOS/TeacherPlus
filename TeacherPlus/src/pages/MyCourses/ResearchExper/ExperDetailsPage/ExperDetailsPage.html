@@ -1,0 +1,75 @@
+<ion-header> 
+  <ion-navbar>
+          <ion-title>
+            详细信息
+          </ion-title>
+       
+          
+        </ion-navbar>
+      
+      </ion-header>
+      
+      <ion-content>
+            <h2 style="text-align:center">{{title}}</h2>
+          <div  [innerHtml]="content" (click)="Modal($event)" padding></div>
+          <ion-list>
+     
+            <button ion-item  (click) = "detailAttach(attach)" *ngFor="let attach of attachs;let i = index" text-wrap>
+             
+              <ion-thumbnail item-start>
+                    <img src="{{attach.metadata.Thumbnail}}">
+                  </ion-thumbnail>
+                 
+                  <p>文件大小：{{attach.fileLengthText}}</p>
+                  <ion-icon *ngIf = "attach.fileType == '视频'" name="logo-youtube" item-end></ion-icon>
+           </button>
+       
+           </ion-list>
+          <p padding>
+            <ion-badge *ngIf="isTop" color="sky" text-xs text-light>置顶</ion-badge>
+            <ion-badge *ngIf="isGood" color="danger" text-xs text-light>精华</ion-badge>
+            <span ion-text color="muted" f-fr>{{author}} 于 {{releaseTime}} 发表</span>
+        </p>
+   
+        
+        <ion-toolbar color="light">回复列表</ion-toolbar>
+           <page-EmptyListPage *ngIf = 'comments.length > 0 ? false:true'></page-EmptyListPage>
+
+           <ion-list>
+              <ion-item-sliding  *ngFor="let comment of comments;let i = index">
+                  <ion-item>
+                      <ion-avatar item-left>
+                          <img src="{{comment.userAvator || defaultAvator}}">
+                      </ion-avatar>
+                
+                      <div text-wrap text-lg>{{comment.content}}</div>
+                      <p text-gn>{{comment.userName}} 于 {{comment.commentTime}} 发表</p>
+                  
+                  </ion-item>
+                  <ion-item-options>
+                      <button ion-button color="danger" (click)="remove(comment,i)">删除</button>
+                  </ion-item-options>
+      
+              </ion-item-sliding>
+          </ion-list>
+  
+
+        </ion-content>
+        <ion-footer>
+
+
+        
+          <ion-toolbar color="light">
+              <a (click)="reply()" style="color: blue">发表回复。。。</a>
+              <ion-buttons end  margin-left padding-horizontal>
+                      <button ion-button color="primary" (click)="voteup()">
+                              <ion-icon name="thumbs-up"></ion-icon> 点赞
+                      </button>
+                    </ion-buttons>
+          </ion-toolbar>
+        
+        
+        
+        
+        
+        </ion-footer>

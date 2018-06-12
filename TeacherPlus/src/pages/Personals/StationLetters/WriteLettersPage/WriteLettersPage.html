@@ -1,0 +1,42 @@
+<ion-header> 
+    <ion-navbar>
+            <ion-buttons end>
+                <button ion-button (click)="send()">
+                    发送
+                    </button>
+          </ion-buttons>
+          <ion-title>
+            写邮件
+          </ion-title>
+       
+          
+        </ion-navbar>
+      
+      </ion-header>
+      
+      <ion-content>
+       <div>
+           <button button ion-button outline style="width:85%" (click) = "showContacts()" padding-horizontal>点击查看收件人</button>
+           <ion-icon *ngIf = "canAdd" name="add-circle" (click) = "addContacts()" style="font-size:30px;float:right;margin-top: 10px;margin-right: 10px"></ion-icon>
+       </div>
+       <ion-list inset style="margin: 0;">
+        <ion-item>
+          <ion-label>信件主题</ion-label>
+          <ion-input type="text" [(ngModel)]="subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea rows="5" placeholder="请输入内容" [(ngModel)]="content" style="width:100%; padding: 0;"></ion-textarea>
+    </ion-item>
+    <div padding-horizontal>
+      <div class="attach-list">
+          <div *ngFor="let img of attachs;let i = index" class="attach-item" (click)="editImg(i)">
+              <img src="{{img.fileUrl}}" />
+          </div>
+          <div class="attach-add">
+              <button type="button" (click)="addImg()"></button>
+          </div>
+      </div>
+    </div>
+         </ion-list>
+   
+      </ion-content>

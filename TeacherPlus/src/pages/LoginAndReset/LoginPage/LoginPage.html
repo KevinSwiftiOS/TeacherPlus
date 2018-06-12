@@ -1,0 +1,29 @@
+
+<ion-header> 
+    <ion-navbar hideBackButton>
+      <ion-title>
+        登录
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+    <div class="logo"></div>
+    <ion-list inset>
+        <ion-item>
+            <ion-icon name="person" item-left></ion-icon>
+            <ion-input autocapitalize="off" autocorrect="off"    type="text" placeholder="请输入账号" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="lock" item-left></ion-icon>
+            <ion-input type="password" placeholder="请输入密码" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <ion-input [hidden]="true"></ion-input>
+    </ion-list>
+    <div padding>
+        <ion-buttons>
+            <button ion-button color="primary" block class="LoginAndResetBtn" (click)="login()">登录</button>
+        </ion-buttons>
+    </div>
+</ion-content>

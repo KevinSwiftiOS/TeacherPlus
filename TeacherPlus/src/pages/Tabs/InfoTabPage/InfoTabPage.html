@@ -1,0 +1,32 @@
+<ion-header> 
+  <ion-navbar>
+      
+    <ion-title>
+      发现
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  overflow-scroll="true">
+  <page-EmptyListPage *ngIf='items.length > 0 ? false:true'></page-EmptyListPage>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content   pullingIcon="arrow-dropdown"
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="正在刷新中..."></ion-refresher-content>
+    </ion-refresher>
+  <ion-list>
+      <button ion-item  *ngFor="let item of items" title=“{{item.title}}”  (click)="detail(event,item)" text-wrap>
+   
+      {{item.title}}
+      <p>{{item.releaseTime}}</p>
+      <ion-icon *ngIf = "isAndroid" name="arrow-forward"   item-right></ion-icon>
+    </button>
+    
+
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{loadingText}}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

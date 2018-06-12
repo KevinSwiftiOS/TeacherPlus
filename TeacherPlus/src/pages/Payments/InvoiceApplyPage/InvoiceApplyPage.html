@@ -1,0 +1,61 @@
+<ion-header> 
+    <ion-navbar>
+            <ion-buttons end>
+                <button ion-button (click)="save()">
+                     提交
+                    </button>
+      </ion-buttons>
+          <ion-title>
+            编辑发票
+          </ion-title>
+       
+          
+        </ion-navbar>
+      
+      </ion-header>
+      
+      <ion-content>
+          <ion-list>
+              <ion-item>
+                  <ion-label>发表抬头：</ion-label>
+                  <ion-input type="text" text-right  disabled = "false" [(ngModel)]="item.toCompany"></ion-input>
+              
+              </ion-item>
+              <ion-item>
+                  <ion-label>单位税号：</ion-label>
+                  <ion-input type="text" text-right [(ngModel)]="item.taxID"></ion-input>
+              
+              </ion-item>
+             
+             
+                 
+              <ion-item>
+                  <ion-label>收件人：</ion-label>
+                  <ion-input type="text" text-right [(ngModel)]="item.userName"></ion-input>
+              
+              </ion-item>
+              <ion-item>
+                  <ion-label>联系电话：</ion-label>
+                  <ion-input type="text" text-right [(ngModel)]="item.userPhone"></ion-input>
+              
+              </ion-item>
+              <ion-item>
+                  <ion-label>联系地址：</ion-label>
+                  <ion-input type="text" text-right [(ngModel)]="item.userAddr"></ion-input>
+              
+              </ion-item>
+                         
+                     </ion-list>      
+  
+           图片区：
+           <div padding-horizontal>
+            <div class="attach-list">
+                <div *ngFor="let img of showImages;let i = index" class="attach-item" (click) = "removeOrPreView(i)">
+                    <img src="{{img}}"  />
+                </div>
+                <div class="attach-add">
+                    <button type="button" (click)="addImg()"></button>
+                </div>
+            </div>
+        </div>
+      </ion-content>

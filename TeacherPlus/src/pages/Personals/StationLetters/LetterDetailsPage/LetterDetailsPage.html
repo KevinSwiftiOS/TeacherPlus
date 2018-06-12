@@ -1,0 +1,38 @@
+<ion-header> 
+  <ion-navbar>
+      <ion-title>
+    详细信息
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+      <div *ngIf = "!isShowSlides">
+      <h2 style="text-align:center">{{item.subject}}</h2>
+    <div [innerHtml]="item.content" style="width: 80%" padding-horizontal></div>
+    <ion-list style="height: 10%">
+     
+          <button ion-item  (click) = "detailAttach(attach)" *ngFor="let attach of attachs;let i = index">
+           
+              <ion-thumbnail item-start>
+                  <img src="{{attach.metadata.Thumbnail}}">
+                </ion-thumbnail>
+               
+                <p>文件大小：{{attach.fileLengthText}}</p>
+                <ion-icon *ngIf = "attach.fileType == '视频'" name="logo-youtube" item-end></ion-icon>
+ </button>
+         </ion-list>
+         </div>
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="light">
+        <input (click)="reply()" type="text" placeholder="回复" class="reply-input" />
+        <ion-buttons end  margin-left padding-horizontal>
+                <button ion-button color="primary" (click)="remove()">
+                        <ion-icon name="trash"></ion-icon> 删除
+                </button>
+              </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

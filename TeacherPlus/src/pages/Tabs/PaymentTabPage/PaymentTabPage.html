@@ -1,0 +1,28 @@
+<ion-header> 
+  <ion-navbar>
+    <ion-title center>缴费</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+   
+    <page-EmptyListPage *ngIf = 'items.length > 0 ? false:true'></page-EmptyListPage>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content   pullingIcon="arrow-dropdown"
+        pullingText="下拉刷新"
+        refreshingSpinner="circles"
+        refreshingText="正在刷新中..."></ion-refresher-content>
+      </ion-refresher>
+<ion-list>
+  <ion-item *ngFor="let item of items"  text-wrap>
+   <p></p>
+    <h2>{{item.title}}</h2>
+    <p>需缴金额：{{item.amount}} </p>
+    <p>订单时间：{{item.ordertime}}</p>
+    <p>缴费状态：{{item.state}}</p>
+    <p> 支付方式：{{item.paymethod}}</p>
+    <button ion-button  item-right (click) = "detailOrPay(item)" round>{{item.btnTitle}}</button>
+  </ion-item>
+</ion-list>
+
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header> 
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button (click)="cancel()">
+               取消
+              </button>
+        </ion-buttons>
+        <ion-title>
+            {{deItem.title}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <vg-player class="video-container" (onPlayerReady)="onPlayerReady($event)">
+        <vg-overlay-play></vg-overlay-play>
+        <vg-buffering></vg-buffering>
+        <vg-controls>
+            <vg-play-pause></vg-play-pause>
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+            <vg-scrub-bar>
+                <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            <vg-fullscreen></vg-fullscreen>
+        </vg-controls>
+        <video #myMedia [vgMedia]="myMedia" id="video" class="video-js vjs-default-skin vjs-fluid" height="210" preload="auto" playsinline webkit-playsinline>
+            <source src="{{videoSrc}}" type="video/mp4">
+        </video>
+    </vg-player>
+
+
+</ion-content>

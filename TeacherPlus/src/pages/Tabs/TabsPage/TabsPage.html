@@ -1,0 +1,7 @@
+<ion-tabs id = "tabs">
+  <ion-tab [root]="tab1Root" tabTitle="学习" tabIcon="book"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="发现" tabIcon="compass"></ion-tab>
+  <ion-tab [root]="tab3Root"  *ngIf = "!isDemo" tabTitle="缴费" tabIcon="hammer"></ion-tab>
+  <ion-tab [root]="tab4Root"  *ngIf = "true" tabTitle="我的" tabIcon="person"  tabBadge="{{totalNewCnt}}" tabBadgeStyle="danger"></ion-tab>
+
+</ion-tabs>

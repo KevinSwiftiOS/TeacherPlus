@@ -1,0 +1,42 @@
+<ion-header> 
+  <ion-navbar>
+      <ion-buttons end>
+          <button ion-button (click)="send()">
+              发送
+              </button>
+    </ion-buttons>
+    <ion-title>
+      发表心得
+    </ion-title>
+ 
+    
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+ 
+
+
+
+  <ion-list inset style="margin: 0;">
+    <ion-item>
+      <ion-label>心得主题</ion-label>
+      <ion-input type="text" [(ngModel)]="subject"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea rows="5" placeholder="请输入内容" [(ngModel)]="content" style="width:100%; padding: 0;"></ion-textarea>
+</ion-item>
+<div padding-horizontal>
+  <div class="attach-list">
+      <div *ngFor="let img of attachs;let i = index" class="attach-item" (click)="editImg(i)">
+          <img src="{{img.fileUrl}}"  />
+      </div>
+      <div class="attach-add">
+          <button type="button" (click)="addImg()"></button>
+      </div>
+  </div>
+</div>
+       </ion-list>
+ 
+</ion-content>

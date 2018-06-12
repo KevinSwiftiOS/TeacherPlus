@@ -1,20 +1,14 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
-
+@import "./icons";
 @import "ionic.globals";
-
-
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
-
-
-
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -22,57 +16,72 @@ $font-path: "../assets/fonts";
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-
-$colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
-);
-$menu-width:200px;
-
+$new-color:#25A24D;
+$colors: ( primary: $new-color, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, info: #5bc0de, sky: #488aff, muted: #8e9093);
+$toolbar-ios-background:$new-color;
+$toolbar-md-background:$new-color;
+$toolbar-wp-background:$new-color;
+// $toolbar-md-height: 100px;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
-
 // App Theme
 // --------------------------------------------------
 // Ionic apps can have different themes applied, which can
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-
 @import "ionic.theme.default";
-
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
-
 @import "ionic.ionicons";
-
-
 // Fonts
 // --------------------------------------------------
-
 @import "roboto";
 @import "noto-sans";
+$text-xs: 0.6rem;
+$text-gn: 1rem;
+$text-lg: 1.5rem;
+
+[text-xs],
+.text-xs {
+    font-size: $text-xs !important;
+}
+
+[text-gn],
+.text-gn {
+    font-size: $text-gn !important;
+}
+
+[text-lg],
+.text-lg {
+    font-size: $text-lg !important;
+}
+
+[text-light],
+.text-light {
+    font-weight: normal !important;
+}
+
+[text-fat],
+.text-fat {
+    font-weight: bold !important;
+}
+
+[f-fl],
+.f-fl {
+    float: left;
+}
+
+[f-fr],
+.f-fr {
+    float: right;
+}

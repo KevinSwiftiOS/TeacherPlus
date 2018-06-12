@@ -1,0 +1,65 @@
+<ion-header> 
+  <ion-navbar>
+            <ion-buttons end>
+                <button ion-button (click)="edit()">
+                     编辑
+                    </button>
+      </ion-buttons>
+          <ion-title>
+            发票详情
+          </ion-title>
+       
+          
+        </ion-navbar>
+      
+      </ion-header>
+      
+      <ion-content>
+          <ion-list>
+              <ion-item>
+                <p>发表抬头：{{item.toCompany}}</p>
+              </ion-item>
+              <ion-item>
+                  <p>单位税号：{{item.taxID}}</p>
+                </ion-item>
+                <ion-item>
+                 <p>款项内容：{{item.content}}</p>
+                </ion-item>
+                <ion-item>
+                <p>发票金额：{{item.appliedAmount}}</p>
+                </ion-item>
+                                  <ion-item>
+                        <p  color = "secondary">发票状态：{{item.state}}</p>
+                      </ion-item>
+                 
+                        <ion-item>
+                            <p>收件人：{{item.userName}}</p>
+                          </ion-item>
+                          <ion-item>
+                              <p>联系电话：{{item.userPhone}}</p>
+                            </ion-item>
+                            <ion-item>
+                                <p>收取地址：{{item.userAddr}}</p>
+                              </ion-item>
+                         
+                           
+                                <ion-item>
+                                      <p>实开金额：{{item.printAmount}}</p>
+                                    </ion-item>
+                                    <ion-item>
+                                        <p>开票日期：{{item.printTime}}</p>
+                                      </ion-item>
+                                      <ion-item  (click) = "openEinvoicePdfUrl()">
+                                          <p color = "secondary" >链接地址：{{item.einvoicePdfUrl}}</p>
+                                        </ion-item>
+                                        <ion-item>
+                                            <p>申请时间：{{item.appliedTime}}</p>
+                                          </ion-item>
+                                      </ion-list>
+           <ion-list>
+             <ion-item *ngFor = "let img of item.evidenceImgUrl;let i = index" (click) = "preview(i)">
+              <img src = "{{img}}"/>
+             </ion-item>
+           </ion-list>
+      
+      </ion-content>

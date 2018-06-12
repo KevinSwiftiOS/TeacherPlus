@@ -1,0 +1,28 @@
+<ion-header> 
+        <ion-navbar>
+          <ion-title>
+           作业实践
+          </ion-title>
+        </ion-navbar>
+        </ion-header>
+<ion-content>
+                <page-EmptyListPage *ngIf = 'items.length > 0 ? false:true'></page-EmptyListPage>
+                <ion-refresher (ionRefresh)="doRefresh($event)">
+                                <ion-refresher-content   pullingIcon="arrow-dropdown"
+                                pullingText="下拉刷新"
+                                refreshingSpinner="circles"
+                                refreshingText="正在刷新中..."></ion-refresher-content>
+                              </ion-refresher>
+                    
+       <ion-list>
+               <ion-item *ngFor = "let item of items">
+                        <p></p>
+                  <h2>{{item.desc}}</h2>
+                  <p>截止时间：{{item.deadtime}} </p>
+                  <p>状态：{{item.status}}</p>
+                  <button ion-button (click) = "detail(item)" item-right round>去学习</button>
+               </ion-item>
+       </ion-list>
+        </ion-content>
+     
+              

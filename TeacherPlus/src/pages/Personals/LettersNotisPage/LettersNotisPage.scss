@@ -1,0 +1,23 @@
+page-LettersNotisPage{
+.active{
+    color:green;
+    width:48%;
+    text-align: center;
+    font-size: 20px;
+    border-bottom:2px solid green;
+    float: left;
+};
+.unActive{
+    color:black;
+    width:48%;
+    text-align: center;
+    font-size: 20px;
+    border-bottom:2px solid gray;
+    float: left;
+};
+.redPoint{
+color: red;
+float: right;
+padding-right: 100px;
+};
+};

@@ -1,0 +1,60 @@
+<ion-header> 
+    <ion-navbar>
+        <ion-title>
+            帖子详情
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h2 style="text-align:center">{{item.title}}</h2>
+    <div padding [innerHtml]="item.content" (click) = "imgModal($event)" ></div>
+    <p padding>
+        <ion-badge *ngIf="item.isTop" color="sky" text-xs text-light>置顶</ion-badge>
+        <ion-badge *ngIf="item.isGood" color="danger" text-xs text-light>精华</ion-badge>
+        <ion-badge *ngIf="item.isTeacherTalked" color="info" text-xs text-light>教师参与</ion-badge>
+        <span ion-text color="muted" f-fr>{{item.author}} 于 {{item.releaseTime}} 发表</span>
+    </p>
+
+    <ion-toolbar color="light">回复列表</ion-toolbar>
+    <page-EmptyListPage *ngIf='replies.length > 0 ? false:true'></page-EmptyListPage>
+    <ion-list>
+        <ion-item-sliding *ngFor="let reply of replies;let i = index">
+            <ion-item>
+                <ion-avatar item-left>
+                    <img src="{{reply.avator || defaultAvator}}">
+                </ion-avatar>
+                <ion-badge *ngIf="reply.isTeacher" color="info" text-xs text-light>教师</ion-badge>
+                <div text-wrap text-lg>{{reply.content}}</div>
+                <p text-gn>{{reply.author}} 于 {{reply.date}} 发表</p>
+                <div item-right>
+                    <button ion-button samll clear (click)="replyQuoteid(reply)" no-padding>
+                        <ion-icon name="undo" ></ion-icon>
+                    </button>
+                    <button ion-button samll clear (click)="voteupReplay(reply)" no-padding>
+                        <ion-icon name="{{reply.iconName}}" ></ion-icon>&nbsp;{{reply.voteupCount}}
+                    </button>
+                </div>
+            </ion-item>
+            <ion-item-options>
+                <button ion-button color="danger" (click)="removeReplay(reply,i)">删除</button>
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{loadingText}}">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="light">
+        <a (click)="reply()" style="color: blue">发表回复。。。</a>
+        <ion-buttons end  margin-left padding-horizontal>
+                <button ion-button color="primary" (click)="voteup()">
+                        <ion-icon name="thumbs-up"></ion-icon> 点赞
+                </button>
+              </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
